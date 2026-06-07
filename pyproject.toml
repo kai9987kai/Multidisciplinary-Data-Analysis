@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multidisciplinary-data-analysis"
+version = "2.0.0"
+description = "A reproducible multidisciplinary Python data-analysis workflow"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "kai9987kai" }]
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "scipy>=1.15",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2",
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.9",
+]
+
+[project.scripts]
+mda = "multidisciplinary_analysis.cli:entrypoint"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP"]
