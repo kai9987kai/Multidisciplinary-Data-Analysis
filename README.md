@@ -42,7 +42,8 @@ Run the quality checks:
 
 ```powershell
 ruff check .
-pytest
+ruff format --check .
+pytest --cov=multidisciplinary_analysis --cov-fail-under=85
 python -m build
 ```
 
